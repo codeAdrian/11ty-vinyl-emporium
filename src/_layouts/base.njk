@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include "head.njk" %}
+        {% if site.env %}
+            <!-- Capture the CSS content as a Nunjucks variable -->
+            {% set css %}{% include "styles.min.css" %}{% endset %}
+            <style>
+                {{css | safe}}
+            </style>
+        {% else %}
+            <link rel="stylesheet" href="/static/styles.min.css">
+        {% endif %}
+
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Germania+One&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+/>
+
+    </head>
+    <body>
+        {% include "header.njk" %}
+        {{ content | safe }}
+    </body>
+    <script src="/static/app.min.js"></script>
+</html>

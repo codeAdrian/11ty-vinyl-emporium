@@ -1,0 +1,11 @@
+<a href="{{ url }}" onClick="applyClass()" class="card">
+    <figure class="card__figure">
+        {% image data.imageCover,
+        "",
+        "card__image" %}
+        <figcaption class="card__content">
+            <h2 class="card__title">{{ data.title }}</h2>
+            <h3 class="card__subtitle">{{ data.artist }}</h3>
+        </figcaption>
+    </figure>
+</a>

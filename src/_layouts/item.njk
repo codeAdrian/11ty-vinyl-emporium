@@ -1,0 +1,38 @@
+---
+layout: base.njk
+---
+<section class="product__media-wrapper" style="--cover-background-color: {{background}}">
+    <article class="product__media">
+        <div class="product__image">
+            {% image imageCover,""%}
+        </div>
+
+        <div class="product__image--deco">
+            {% image imageLp,
+            "" %}
+        </div>
+    </article>
+</section>
+
+<section class="product__main" style="--cover-background-color: {{background}}">
+
+    <aside class="product__sidebar">
+        <div>
+            <h2 class="product__title">{{title}}</h2>
+            <h3 class="product__subtitle">{{artist}}</h3>
+        </div>
+        <h3>Tracklist</h3>
+        <ol>
+            {% for track in tracks %}
+                <li>{{track}}</li>
+            {% endfor %}
+        </ol>
+    </aside>
+
+    <article class="product__content">
+        <h2 class="product__title">About the album</h2>
+        <blockquote class="product__description">{{ content | safe }}</blockquote>
+
+    </article>
+
+</section>

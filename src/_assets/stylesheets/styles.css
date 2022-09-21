@@ -1,0 +1,11 @@
+@import "./normalize.css";
+
+@import "./variables.colors.css";
+@import "./variables.font.css";
+
+@import "./components.header.css";
+@import "./components.grid.css";
+@import "./components.card.css";
+@import "./components.product.css";
+
+@import "./global.setup.css";

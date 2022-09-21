@@ -1,0 +1,29 @@
+:root {
+	--color-cta: hsl(359, 87%, 21%);
+	--color-cta-darker: hsl(359, 87%, 15%);
+
+	--color-primary-lighter: hsl(32deg 100% 56%);
+	--color-primary: hsl(32deg 100% 46%);
+	--color-primary-darker: hsl(32deg 100% 36%);
+
+	--color-text: hsl(220deg 10% 6%);
+
+	--color-grayscale-1: hsl(220deg 10% 6%);
+	--color-grayscale-2: hsl(213deg 12% 17%);
+	--color-grayscale-3: hsl(214deg 13% 25%);
+	--color-grayscale-4: hsl(212deg 9% 61%);
+	--color-grayscale-5: hsl(0deg 0% 100%);
+
+	--color-grayscale-transparent: hsl(240deg 6% 6% / 42%);
+
+	--color-pattern: linear-gradient(
+		-45deg,
+		var(--color-grayscale-2) 25%,
+		var(--color-grayscale-3) 0,
+		var(--color-grayscale-3) 50%,
+		var(--color-grayscale-2) 0,
+		var(--color-grayscale-2) 75%,
+		var(--color-grayscale-3) 0,
+		var(--color-grayscale-3)
+	);
+}

@@ -1,0 +1,13 @@
+---
+layout: base.njk
+---
+
+<main>
+    <section class="grid">
+        {% for item in collections.items %}
+            {% set data = item.data %}
+            {% set url = item.url %}
+            {% include "card.njk" %}
+        {% endfor %}
+    </section>
+</main>
