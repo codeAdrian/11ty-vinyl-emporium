@@ -2,15 +2,7 @@
 <html lang="en">
     <head>
         {% include "head.njk" %}
-        {% if site.env %}
-            <!-- Capture the CSS content as a Nunjucks variable -->
-            {% set css %}{% include "styles.min.css" %}{% endset %}
-            <style>
-                {{css | safe}}
-            </style>
-        {% else %}
-            <link rel="stylesheet" href="/static/styles.min.css">
-        {% endif %}
+        <link rel="stylesheet" href="/static/styles.min.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
