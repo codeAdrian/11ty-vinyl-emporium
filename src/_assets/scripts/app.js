@@ -7,22 +7,6 @@ async function getPageContent(url) {
 	return /<body[^>]*>([\w\W]*)<\/body>/.exec(text)[1];
 }
 
-function isBackNavigation(navigateEvent) {
-	if (
-		navigateEvent.navigationType === "push" ||
-		navigateEvent.navigationType === "replace"
-	) {
-		return false;
-	}
-	if (
-		navigateEvent.destination.index !== -1 &&
-		navigateEvent.destination.index < navigation.currentEntry.index
-	) {
-		return true;
-	}
-	return false;
-}
-
 // Intercept navigations
 // https://developer.chrome.com/docs/web-platform/navigation-api/
 // This is a naive usage of the navigation API, to keep things simple.
@@ -34,16 +18,34 @@ async function onLinkNavigate(callback) {
 
 		if (location.origin !== toUrl.origin) return;
 
-		const fromPath = location.pathname;
+		applyTag(toUrl);
 
-		event.transitionWhile(
-			callback({
+		const handler = function () {
+			return callback({
 				toPath: toUrl.pathname,
-				fromPath,
-				isBack: isBackNavigation(event),
-			})
-		);
+			});
+		};
+
+		if (event.intercept) {
+			event.intercept({
+				handler,
+			});
+		} else {
+			event.transitionWhile(handler());
+		}
 	});
+}
+
+function applyTag(url) {
+	const image = document.querySelector(
+		`a[href="${url.pathname}"] .card__image`
+	);
+
+	if (!image) {
+		return;
+	}
+
+	image.style.pageTransitionTag = "product-image";
 }
 
 onLinkNavigate(async ({ toPath }) => {
@@ -55,13 +57,3 @@ onLinkNavigate(async ({ toPath }) => {
 		document.body.innerHTML = content;
 	});
 });
-
-window.applyClass = function () {
-	const figure = this.window.event.target.closest("figure");
-	const image = figure.querySelector(".card__image");
-	image.style.pageTransitionTag = "product-image";
-
-	console.log(image);
-};
-
-// C:\Users\Adrian\AppData\Local\Google\Update
