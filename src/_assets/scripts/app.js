@@ -51,7 +51,6 @@ function applyTag(url) {
 onLinkNavigate(async ({ toPath }) => {
 	const content = await getPageContent(toPath);
 	const transition = document.createDocumentTransition();
-
 	transition.start(() => {
 		window.scrollTo({ left: 0, top: 0 });
 		document.body.innerHTML = content;

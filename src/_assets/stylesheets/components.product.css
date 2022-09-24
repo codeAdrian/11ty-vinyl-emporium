@@ -160,9 +160,18 @@ h3 {
 ::page-transition-outgoing-image(*),
 ::page-transition-incoming-image(*) {
 	animation-timing-function: ease-in-out;
+	animation-duration: 0.25s;
 }
 
-::page-transition-outgoing-image(root),
-::page-transition-incoming-image(root) {
-	animation-duration: 0.4s;
+::page-transition-container(product-image) {
+	animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+	animation-duration: 0.5s;
+}
+
+@media (prefers-reduced-motion) {
+	::page-transition-container(*),
+	::page-transition-outgoing-image(*),
+	::page-transition-incoming-image(*) {
+		animation: none !important;
+	}
 }

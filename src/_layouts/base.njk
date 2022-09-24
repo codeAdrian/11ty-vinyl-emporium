@@ -14,7 +14,9 @@
     </head>
     <body>
         {% include "header.njk" %}
-        {{ content | safe }}
+        <div class="app">
+            {{ content | safe }}
+        </div>
     </body>
     <script src="/static/app.min.js"></script>
 </html>
