@@ -1,12 +1,17 @@
 .header {
 	background-color: var(--color-grayscale-3);
 	margin-bottom: 2rem;
-	contain: paint;
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 10;
+}
+
+.header__wrapper {
+	display: flex;
+	align-items: baseline;
+	gap: 0.5rem;
 }
 
 .header__inner {
@@ -33,7 +38,28 @@
 	color: var(--color-primary);
 }
 
-.header__link {
+.header__link,
+.header__link:visited {
 	color: var(--color-primary);
+	transition: color 0.2s ease;
 	text-decoration: none;
+	filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 1));
+}
+
+.header__link:hover {
+	color: var(--color-primary-darker);
+}
+
+.home .header__link--dynamic {
+	display: none;
+}
+
+@supports (view-transition-name: none) {
+	.header__link--dynamic {
+		view-transition-name: header-link;
+	}
+
+	.header h1 {
+		view-transition-name: header-title;
+	}
 }

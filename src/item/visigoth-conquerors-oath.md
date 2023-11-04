@@ -6,6 +6,7 @@ imageCover: 03-cover.jpg
 imageLp: 03-lp.png
 tags: ["items"]
 background: "#5791b6"
+order: 4
 tracks:
   [
     "Steel And Silver",

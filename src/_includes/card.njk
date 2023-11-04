@@ -1,11 +1,9 @@
 <a href="{{ url }}" class="card">
-    <figure class="card__figure">
-        {% image data.imageCover,
-        "LP sleeve cover",
-        "card__image" %}
-        <figcaption class="card__content">
-            <h2 class="card__title">{{ data.title }}</h2>
-            <h3 class="card__subtitle">{{ data.artist }}</h3>
-        </figcaption>
-    </figure>
+  <figure class="card__figure">
+    {% image data.imageCover, "LP sleeve cover", "card__image" %}
+    <figcaption class="card__content">
+      <h2 class="card__title">{{ data.title }}</h2>
+      <h3 class="card__subtitle">{{ data.artist }}</h3>
+    </figcaption>
+  </figure>
 </a>

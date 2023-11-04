@@ -1,22 +1,48 @@
+---
+class: home
+---
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        {% include "head.njk" %}
-        <link rel="stylesheet" href="/static/styles.min.css">
+  <head>
+    {% include "head.njk" %}
+    <link rel="stylesheet" href="/static/styles.min.css" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-        <link
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
       href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Germania+One&family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
-/>
+    />
+    <meta name="view-transition" content="same-origin" />
+  </head>
+  <body class="{{ class }}">
+    {% include "header.njk" %}
+    <div class="app">
+      {{ content | safe }}
+    </div>
+  </body>
+  <script>
+    function applyTag(url) {
+      const image = document.querySelector(
+        `a[href="${url.pathname}"] .card__image`
+      );
 
-    </head>
-    <body>
-        {% include "header.njk" %}
-        <div class="app">
-            {{ content | safe }}
-        </div>
-    </body>
-    <script src="/static/app.min.js"></script>
+      if (!image) {
+        return;
+      }
+
+      image.style.viewTransitionName = "product-image";
+    }
+
+    navigation.addEventListener("navigate", (event) => {
+      const toUrl = new URL(event.destination.url);
+
+      if (!document.startViewTransition || location.origin !== toUrl.origin) {
+        return;
+      }
+
+      applyTag(toUrl);
+    });
+  </script>
 </html>

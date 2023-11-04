@@ -6,6 +6,7 @@ imageCover: 05-cover.jpg
 imageLp: 05-lp.png
 tags: ["items"]
 background: "#e59443"
+order: 3
 tracks:
   [
     "Firepower",

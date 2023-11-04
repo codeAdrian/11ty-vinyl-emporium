@@ -7,6 +7,7 @@ imageCover: 01-cover.jpg
 imageLp: 01-lp.png
 tags: ["items"]
 background: "#b6351b"
+order: 1
 tracks: [
 "Kill or Get Killed",
 "Roaring Thunder",

@@ -6,6 +6,7 @@ imageCover: 08-cover.jpg
 imageLp: 08-lp.png
 tags: ["items"]
 background: "#a1c501"
+order: 5
 tracks:
   [
     "Rev-Raptor",

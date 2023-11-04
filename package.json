@@ -1,30 +1,37 @@
 {
 	"name": "vinyl-emporium",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"scripts": {
 		"clean": "del dist",
 		"dev:postcss": "postcss src/_assets/stylesheets/*.css -o src/static/styles.min.css --watch --verbose",
-		"dev:scripts": "esbuild src/_assets/scripts/app.js --bundle --watch --tree-shaking=false --outfile=src/static/app.min.js",
 		"dev:11ty": "eleventy --serve --watch",
-		"build:postcss": "NODE_ENV=production postcss src/_assets/stylesheets/styles.css -o dist/static/styles.min.css",
-		"build:11ty": "NODE_ENV=production eleventy",
-		"build:scripts": "esbuild src/_assets/scripts/app.js --bundle --minify --tree-shaking=false --outfile=dist/static/app.min.js",
+		"build:postcss": "cross-env NODE_ENV=production postcss src/_assets/stylesheets/styles.css -o dist/static/styles.min.css",
+		"build:11ty": "cross-env NODE_ENV=production eleventy",
 		"start": "run-p dev:*",
-		"build": "run-s clean build:*"
+		"build": "cross-env NODE_ENV=production npm run build:11ty && npm run build:postcss"
 	},
 	"author": "Adrian Bece",
 	"license": "MIT",
+	"browserslist": [
+		"> 1% and last 3 versions",
+		"not dead",
+		"not ie > 1",
+		"not op_mini all",
+		"not op_mob > 1"
+	],
 	"devDependencies": {
-		"@11ty/eleventy": "^1.0.1",
-		"@11ty/eleventy-img": "^2.0.1",
-		"autoprefixer": "^10.4.7",
-		"del-cli": "^4.0.1",
-		"esbuild": "^0.14.42",
+		"@11ty/eleventy": "^2.0.1",
+		"@11ty/eleventy-img": "^3.1.8",
+		"autoprefixer": "^10.4.16",
+		"cross-env": "^7.0.3",
+		"cssnano": "^6.0.1",
+		"del-cli": "^5.1.0",
+		"esbuild": "^0.19.5",
 		"html-minifier": "^4.0.0",
-		"luxon": "^2.4.0",
+		"luxon": "^3.4.3",
 		"npm-run-all": "^4.1.5",
-		"postcss": "^8.4.14",
-		"postcss-cli": "^9.1.0",
-		"postcss-import": "^14.1.0"
+		"postcss": "^8.4.31",
+		"postcss-cli": "^10.1.0",
+		"postcss-import": "^15.1.0"
 	}
 }

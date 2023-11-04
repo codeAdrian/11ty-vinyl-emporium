@@ -3,36 +3,18 @@
 	text-decoration: none;
 	color: currentColor;
 }
-
 .card:visited {
 	color: currentColor;
 }
-
 .card:hover {
 	border-color: var(--color-grayscale-4);
 }
-
+.card__subtitle {
+	margin-bottom: 0;
+}
 .card__content {
 	padding: 2rem 1rem;
 	background-color: var(--color-grayscale-transparent);
 	background-size: var(--step--1) var(--step--1);
 	flex-grow: 1;
-}
-
-.card__title {
-	padding-bottom: 0.5rem;
-}
-
-.card__image {
-	contain: paint;
-}
-
-.card__image--active {
-	page-transition-tag: product-image;
-}
-
-.card__figure {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
 }

@@ -48,3 +48,11 @@ main {
 	height: 100%;
 	overflow: auto;
 }
+
+@media (prefers-reduced-motion) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
+}

@@ -1,38 +1,97 @@
 ---
 layout: base.njk
+class: item
 ---
-<section class="product__media-wrapper" style="--cover-background-color: {{background}}">
-    <article class="product__media">
-        <div class="product__image">
-            {% image imageCover,""%}
-        </div>
 
-        <div class="product__image--deco">
-            {% image imageLp,
-            "" %}
-        </div>
-    </article>
+<section
+  class="product__media-wrapper"
+  style="--cover-background-color: {{ background }}"
+>
+  <nav class="product__nav">
+    <span>
+      <a class="product__link product__link--prev" href="{{ prevPost.url }}">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="52"
+          height="52"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect width="18" height="18" x="3" y="3" rx="2" />
+          <path d="m12 8-4 4 4 4" />
+          <path d="M16 12H8" />
+        </svg>
+      </a>
+    </span>
+    <span class="u-t-right">
+      <a class="product__link product__link--next" href="{{ nextPost.url }}">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="52"
+          height="52"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect width="18" height="18" x="3" y="3" rx="2" />
+          <path d="M8 12h8" />
+          <path d="m12 16 4-4-4-4" />
+        </svg>
+      </a>
+    </span>
+  </nav>
+  <article class="product__media">
+    <div class="product__image">{% image imageCover,""%}</div>
+
+    <div class="product__image--deco">{% image imageLp, "" %}</div>
+  </article>
 </section>
 
-<section class="product__main" style="--cover-background-color: {{background}}">
+<section
+  class="product__main"
+  style="--cover-background-color: {{ background }}"
+>
+  <aside class="product__sidebar">
+    <div>
+      <h2 class="product__title">{{ title }}</h2>
+      <h3 class="product__subtitle">{{ artist }}</h3>
+    </div>
+    <h3>Tracklist</h3>
+    <ol>
+      {% for track in tracks %}
+      <li>{{ track }}</li>
+      {% endfor %}
+    </ol>
+  </aside>
 
-    <aside class="product__sidebar">
-        <div>
-            <h2 class="product__title">{{title}}</h2>
-            <h3 class="product__subtitle">{{artist}}</h3>
-        </div>
-        <h3>Tracklist</h3>
-        <ol>
-            {% for track in tracks %}
-                <li>{{track}}</li>
-            {% endfor %}
-        </ol>
-    </aside>
+  <article class="product__content">
+    <h2 class="product__title">About the album</h2>
+    <blockquote class="product__description">{{ content | safe }}</blockquote>
+  </article>
 
-    <article class="product__content">
-        <h2 class="product__title">About the album</h2>
-        <blockquote class="product__description">{{ content | safe }}</blockquote>
+  <script>
+    function removeTag() {
+      const image = document.querySelector(`.product__image--deco`);
+      image.style.viewTransitionName = "none";
+    }
 
-    </article>
+    navigation.addEventListener("navigate", (event) => {
+      const toUrl = new URL(event.destination.url);
 
+      if (!document.startViewTransition || location.origin !== toUrl.origin) {
+        return;
+      }
+
+      if (toUrl.pathname === "/") {
+        removeTag();
+      }
+    });
+  </script>
 </section>
